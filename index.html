@@ -143,6 +143,23 @@
   .path > div { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 18px 20px; color: var(--ink); }
   .path b { display: block; color: var(--accent); font-size: .78rem; font-weight: 700; margin-bottom: 6px; }
 
+
+  /* ── Безхребетні: картки організмів ── */
+  .org { display: grid; grid-template-columns: minmax(200px, 300px) 1fr; gap: 24px; align-items: start; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; margin-bottom: 20px; }
+  .org figure { border-radius: 14px; overflow: hidden; border: 1px solid var(--border); background: #fff; }
+  .org img { display: block; width: 100%; height: auto; }
+  .org h4 { margin: 0 0 4px; }
+  .org .lat { font-style: italic; color: var(--accent); font-weight: 600; margin-bottom: 14px; }
+  .org dl { display: grid; gap: 10px; }
+  .org dt { color: var(--ink); font-weight: 700; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
+  .org dd { margin: 0 0 2px; }
+  .org .paradox { margin-top: 14px; background: rgba(74,222,128,.06); border: 1px solid rgba(74,222,128,.3); border-radius: 14px; padding: 14px 18px; color: var(--ink); }
+  .org .paradox b { color: var(--accent); }
+  .thanks { text-align: center; margin-top: 32px; }
+  .thanks h4 { margin-bottom: 16px; }
+  .thanks img { display: block; margin: 0 auto; width: 100%; max-width: 320px; height: auto; border-radius: 16px; border: 1px solid var(--border); }
+  .team { margin-top: 24px; font-size: .9rem; color: #5d6f65; }
+
   #about { max-width: 1160px; margin: 0 auto; padding: 80px 24px 40px; }
   #about h2 { margin-bottom: 14px; }
   #about .theme { max-width: 70ch; margin-bottom: 32px; font-size: 1.05rem; }
@@ -173,6 +190,7 @@
     .cmp td { border: 0; padding: 4px 16px; }
     .cmp td::before { content: attr(data-label); display: block; font-size: .75rem; color: #5d6f65; }
     .vs { grid-template-columns: 1fr; }
+    .org { grid-template-columns: 1fr; padding: 18px; }
   }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn, .card, .sub-tab { transition: none; } }
 </style>
@@ -288,10 +306,6 @@
         <figcaption><b>Порося</b></figcaption>
       </figure>
       <figure>
-        <img src="images/mammals-lemurs.jpg" alt="" loading="lazy">
-        <figcaption><b>Лемури катта</b></figcaption>
-      </figure>
-      <figure>
         <img src="images/mammals-marmoset.jpg" alt="" loading="lazy">
         <figcaption><b>Мармозетка</b></figcaption>
       </figure>
@@ -386,6 +400,93 @@
 
   <div class="sub-pane" id="pane-birds" hidden>
     <p class="soon">...</p>
+  </div>
+</template>
+
+<!-- Вміст розділу «Безхребетні тварини» -->
+<template id="tpl-invertebrates">
+  <h3>Безхребетні тварини</h3>
+  <p class="team">Проєкт «Безхребетні тварини» · учасники: Олександр Тарасенко, Артем Сокол, Богдан Фіалко, Артур Андронік, Глєб Толочко.</p>
+
+  <div class="sub-pane">
+    <h4>Вступ</h4>
+    <p>Коли ми уявляємо володарів фауни, то зазвичай згадуємо великих ссавців або хижих птахів. Проте понад 95% усіх відомих видів тварин на планеті — це безхребетні. Вони заселили геотермальні джерела, океанічні западини та високогір'я за сотні мільйонів років до появи хребта. Їхня анатомія — не спрощена копія нашої, а арсенал біоінженерних рішень: від біологічного безсмертя до децентралізованого мозку.</p>
+    <div class="idea"><b>Наша команда покаже п'ять парадоксів безхребетних,</b> які перевертають уявлення про «примітивність» цих істот.</div>
+
+    <h4 style="margin-top:28px">П'ять парадоксів</h4>
+    <article class="org">
+      <figure><img src="images/invert-hydra.jpg" alt="Прісноводна гідра: схема будови" loading="lazy"></figure>
+      <div>
+        <h4>Прісноводна гідра</h4>
+        <p class="lat">Hydra · парадокс безсмертя</p>
+        <dl>
+          <dt>Систематика</dt><dd>Тип Кнідарії (Кишковопорожнинні).</dd>
+          <dt>Анатомічний феномен</dt><dd>Гідра складається всього з двох шарів клітин, але володіє необмеженою здатністю до регенерації. Якщо розрізати тіло гідри на кілька частин, кожна за кілька днів відновить ротовий конус, щупальця та підошву.</dd>
+          <dt>Біомеханіка «суперсили»</dt><dd>Її стовбурові клітини постійно діляться, а процес клітинного старіння (сенесценції) фактично заблокований завдяки активності теломерази та білкам.</dd>
+        </dl>
+        <p class="paradox"><b>Парадокс:</b> повна відсутність серця, мозку та скелета дозволила їй вирішити проблему, над якою б'ється вся сучасна медицина — біологічне старіння.</p>
+      </div>
+    </article>
+    <article class="org">
+      <figure><img src="images/invert-octopus.jpg" alt="Восьминіг звичайний" loading="lazy"></figure>
+      <div>
+        <h4>Восьминіг звичайний</h4>
+        <p class="lat">Octopus vulgaris · парадокс децентралізованого розуму</p>
+        <dl>
+          <dt>Систематика</dt><dd>Тип Молюски, Клас Головоногі.</dd>
+          <dt>Анатомічний феномен</dt><dd>Дві третини нейронів восьминога розташовані не в голові, а в щупальцях. Кожне щупальце здатне самостійно аналізувати смак, текстуру та приймати рухові рішення без прямої команди центрального мозку.</dd>
+          <dt>Біомеханіка «суперсили»</dt><dd>У шкірі молюска зосереджені тисячі хроматофорів (еластичних мішечків з пігментом, керованих окремими м'язами) та іридофорів (клітин-дзеркал). Восьминіг повністю змінює колір і рельєф шкіри за 0,2 секунди, ідеально зливаючись із коралами чи піском.</dd>
+        </dl>
+        <p class="paradox"><b>Парадокс:</b> молюск, чиї найближчі родичі — садові равлики, має блакитну мідну кров (гемоціанін), три серця та інтелект, порівнянний із вищими хребетними.</p>
+      </div>
+    </article>
+    <article class="org">
+      <figure><img src="images/invert-mantis-shrimp.jpg" alt="Рак-богомол" loading="lazy"></figure>
+      <div>
+        <h4>Рак-богомол</h4>
+        <p class="lat">Odontodactylus scyllarus · парадокс «квантового» зору та фізики удару</p>
+        <dl>
+          <dt>Систематика</dt><dd>Тип Членистоногі, Підтип Ракоподібні.</dd>
+          <dt>Анатомічний феномен</dt><dd>Очі рака-богомола мають 16 типів зорових фоторецепторів (у людини лише 3) і сприймають ультрафіолетове світло, поляризацію та глибину кожним оком окремо.</dd>
+          <dt>Біомеханіка «суперсили»</dt><dd>Його кінцівки-дробарки викидаються вперед із прискоренням кулі 22-го калібру (швидкість понад 80 км/год). Удар настільки швидкий, що у воді виникає явище кавітації — утворюються бульбашки вакууму, схлопування яких виділяє тепло, порівнянне з температурою на поверхні Сонця, розбиваючи мушлі найміцніших молюсків.</dd>
+        </dl>
+        <p class="paradox"><b>Парадокс:</b> біохімічний екзоскелет витримує багаторазові вибухові навантаження без появи тріщин завдяки амортизуючій структурі хітину у формі спіралі Булігана.</p>
+      </div>
+    </article>
+    <article class="org">
+      <figure><img src="images/invert-daphnia.jpg" alt="Дафнія звичайна під мікроскопом" loading="lazy"></figure>
+      <div>
+        <h4>Дафнія звичайна</h4>
+        <p class="lat">Daphnia pulex · парадокс чутливості, водний біоіндикатор</p>
+        <dl>
+          <dt>Систематика</dt><dd>Тип Членистоногі, Ряд Гіллястовусі.</dd>
+          <dt>Анатомічний феномен</dt><dd>Напівпрозорий карапакс робить дафнію відкритою лабораторією: під мікроскопом видно роботу її одинарного ока, пульсацію серця та перистальтику кишківника.</dd>
+          <dt>Дослідницька роль</dt><dd>Через прозорі стінки та високу швидкість обміну речовин дафнії першими реагують на токсини, пестициди та важкі метали у воді. Сповільнення частоти серцебиття або зміна траєкторії руху дафній є стандартизованим тестом екологічного моніторингу річок і озер.</dd>
+        </dl>
+        <p class="paradox"><b>Парадокс:</b> мікроскопічний рачок розміром у пару міліметрів виступає головним контролером якості питної води для багатомільйонних міст.</p>
+      </div>
+    </article>
+    <article class="org">
+      <figure><img src="images/invert-bee.jpg" alt="Бджола медоносна на квітці" loading="lazy"></figure>
+      <div>
+        <h4>Бджола медоносна</h4>
+        <p class="lat">Apis mellifera · парадокс колективного запилення</p>
+        <dl>
+          <dt>Систематика</dt><dd>Тип Членистоногі, Ряд Перетинчастокрилі.</dd>
+          <dt>Анатомічний феномен</dt><dd>Механіка польоту бджоли довгий час вважалася аеродинамічним парадоксом. Вона робить до 230 помахів на секунду з короткою амплітудою, генеруючи мініатюрні повітряні вихори над крилом, що забезпечує колосальну підйомну силу при мініатюрних розмірах.</dd>
+          <dt>Дослідницька частина</dt><dd>Бджоли та дикі запилювачі забезпечують розмноження понад 75% провідних продовольчих культур світу (плодові сади, овочі, ягоди, олійні культури). Їхнє гіпотетичне вимирання призведе не просто до дефіциту меду, а до обвалу світового агросектору, зникнення кормових трав (люцерна, конюшина) для тваринництва та втрати вітамінної бази для людства.</dd>
+        </dl>
+        <p class="paradox"><b>Парадокс:</b> окрема бджола живе лише кілька тижнів, але сім'я функціонує як єдиний суперорганізм, на якому тримається глобальна продовольча безпека планети.</p>
+      </div>
+    </article>
+
+    <h4 style="margin-top:28px">Висновок</h4>
+    <div class="idea">Наш аналіз спростовує твердження про «примітивність» безхребетних. Відсутність хребта виявилася не еволюційним обмеженням, а перевагою, яка відкрила простір для різноманітних морфологічних рішень: від гідростатичного скелета головоногих до надміцного хітинового панцира членистоногих. <b>Безхребетні — це фундаментальний каркас біосфери,</b> без роботи якого наземні та водні екосистеми зазнають колапсу за лічені тижні.</div>
+
+    <div class="thanks">
+      <h4>Дякуємо за увагу!</h4>
+      <img src="images/invert-thanks.jpg" alt="Фідбек" loading="lazy">
+    </div>
   </div>
 </template>
 
@@ -552,7 +653,7 @@
 var content = {
   fungi:          '<h3>Гриби</h3><p class="soon">...</p>',
   plants:         '<h3>Рослини</h3><p class="soon">...</p>',
-  invertebrates:  '<h3>Безхребетні тварини</h3><p class="soon">...</p>',
+  invertebrates:  document.getElementById('tpl-invertebrates').innerHTML,
   vertebrates:    document.getElementById('tpl-vertebrates').innerHTML
 };
 
