@@ -143,6 +143,8 @@
   .slider.is-full .slider-track img { height: 100%; object-fit: contain; }
   .slider.is-full .slider-bar { margin-top: 10px; color: #ddd; }
   .slider-bar .fs { margin-left: 8px; }
+  .video-wrap.video-short { max-width: 340px; margin-left: 0; }
+  .video-wrap.video-short iframe { aspect-ratio: 9 / 16; }
   .gallery.bird { grid-template-columns: repeat(auto-fit, minmax(220px, 420px)); }
   .gallery.bird img { aspect-ratio: 3 / 2; }
   .gallery figcaption { padding: 12px 16px; font-size: .88rem; color: var(--text); }
@@ -372,6 +374,11 @@
         <img src="images/mammals-meerkat.jpg" alt="" loading="lazy">
         <figcaption><b>Сурикат</b></figcaption>
       </figure>
+    </div>
+
+    <h4>Відео</h4>
+    <div class="video-wrap video-short">
+      <iframe src="https://www.youtube.com/embed/sEiV2y9Xn6E" title="Теплокровні тварини" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </div>
   </div>
 
