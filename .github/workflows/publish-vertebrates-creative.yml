@@ -1,0 +1,89 @@
+name: Publish vertebrates creative product
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/publish-vertebrates-creative.yml"
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add creative product to vertebrates group
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path("index.html")
+          html = p.read_text(encoding="utf-8")
+          old = '<p class="soon">...</p>'
+          new = r"""
+          <style>
+          #pane-creative .winter-hero{padding:clamp(22px,4vw,40px);border:1px solid #426257;border-radius:24px;background:radial-gradient(circle at 90% 5%,#315c50,transparent 38%),linear-gradient(135deg,#102b27,#172b38)}
+          #pane-creative .winter-kicker{color:#9be7c0;font-size:.75rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
+          #pane-creative .winter-hero h4{font-size:clamp(1.6rem,3.4vw,2.5rem);line-height:1.12;margin:12px 0}
+          #pane-creative .winter-hero p{max-width:760px;color:#c7d8d4;line-height:1.7}
+          #pane-creative .winter-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+          #pane-creative .winter-tags span{padding:7px 12px;border:1px solid #45675e;border-radius:999px;color:#e3f4ed;font-size:.82rem}
+          #pane-creative .winter-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,225px),1fr));gap:13px;margin:22px 0}
+          #pane-creative .winter-card{padding:19px;border:1px solid #35534d;border-radius:18px;background:linear-gradient(155deg,#1b3530,#142722)}
+          #pane-creative .winter-card .animal{font-size:2.2rem;display:block;margin-bottom:9px}
+          #pane-creative .winter-card h5{font-size:1.05rem;margin:0 0 8px;color:#f0faf5}
+          #pane-creative .winter-card p{color:#bfd0c9;font-size:.91rem;line-height:1.6;margin:0}
+          #pane-creative .winter-card small{display:inline-block;margin-top:12px;color:#9bdcf2;font-weight:800;letter-spacing:.04em}
+          #pane-creative .winter-section{margin:26px 0}
+          #pane-creative .winter-section h4{font-size:1.3rem;margin-bottom:12px}
+          #pane-creative .winter-paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+          #pane-creative .winter-path{padding:17px;border-radius:16px;background:#ffffff08;border:1px solid #ffffff1c}
+          #pane-creative .winter-path b{display:block;margin-bottom:6px;color:#b9f1d2}
+          #pane-creative .winter-path p{margin:0;color:#c6d4ce;line-height:1.55;font-size:.92rem}
+          #pane-creative .winter-quiz{padding:20px;border:1px solid #45645a;border-radius:18px;background:#132923}
+          #pane-creative .winter-quiz details{padding:12px 0;border-bottom:1px solid #ffffff1c}
+          #pane-creative .winter-quiz details:last-child{border:0}
+          #pane-creative .winter-quiz summary{cursor:pointer;font-weight:750;color:#effaf4}
+          #pane-creative .winter-quiz details p{color:#c4d8ce;line-height:1.6;margin:10px 0 0}
+          #pane-creative .winter-note{padding:15px 18px;border-left:3px solid #8dd8b2;background:#ffffff08;border-radius:0 12px 12px 0;color:#cbdad3;line-height:1.65}
+          </style>
+          <div class="winter-hero">
+            <div class="winter-kicker">Творчий продукт · інтерактивна мініекспозиція</div>
+            <h4>Зимові суперсили хребетних України</h4>
+            <p>Як пережити мороз, коли навколо мало їжі, вода замерзає, а температура падає? П’ять українських тварин — п’ять дивовижних стратегій виживання. Досліди картки та відкрий приховані факти.</p>
+            <div class="winter-tags"><span>5 тварин</span><span>2 стратегії</span><span>1 мета — вижити</span></div>
+          </div>
+          <div class="winter-section">
+            <h4>П’ять способів перемогти холод</h4>
+            <div class="winter-grid">
+              <article class="winter-card"><span class="animal">🦔</span><h5>Їжак — режим енергозбереження</h5><p>Восени накопичує жир, а взимку впадає у справжню сплячку: серце б’ється повільніше, температура тіла знижується.</p><small>ЗАМЕДЛИТИСЯ</small></article>
+              <article class="winter-card"><span class="animal">🐸</span><h5>Трав’яна жаба — підводна пауза</h5><p>Зимує на дні водойми або в мулі. Обмін речовин сповільнюється, а дихання відбувається майже повністю через шкіру.</p><small>ЗАМЕДЛИТИСЯ</small></article>
+              <article class="winter-card"><span class="animal">🦦</span><h5>Горностай — біла маскувальна шуба</h5><p>Узимку хутро стає білим, але кінчик хвоста залишається чорним. Густий зимовий покрив допомагає зберігати тепло.</p><small>ЗБЕРЕГТИ ТЕПЛО</small></article>
+              <article class="winter-card"><span class="animal">🐦</span><h5>Синиця — пухнастий пуховик</h5><p>Розпушує пір’я, утримуючи шар теплого повітря. Тремтіння м’язів виробляє тепло, а судини лап зменшують його втрату.</p><small>ЗІГРІТИСЯ</small></article>
+              <article class="winter-card"><span class="animal">🐟</span><h5>Карась — хімічний трюк</h5><p>Коли у воді бракує кисню, перебудовує обмін речовин і може утворювати етанол, який виводиться через зябра.</p><small>ПЕРЕЖИТИ БРАК КИСНЮ</small></article>
+            </div>
+          </div>
+          <div class="winter-section">
+            <h4>Дві великі стратегії зими</h4>
+            <div class="winter-paths">
+              <div class="winter-path"><b>❄️ Знизити витрати енергії</b><p>Їжак, жаба й карась зменшують активність або перебудовують обмін речовин, щоб пережити несприятливий період.</p></div>
+              <div class="winter-path"><b>🔥 Зберігати й виробляти тепло</b><p>Синиця утеплюється пір’ям і виробляє тепло м’язами, а горностай змінює хутро та краще маскується.</p></div>
+            </div>
+          </div>
+          <div class="winter-section winter-quiz">
+            <h4>Перевір себе</h4><p style="color:#bfd0c9;margin-top:-4px">Натисни на запитання, щоб побачити відповідь.</p>
+            <details><summary>Хто взимку майже повністю дихає шкірою?</summary><p>Трав’яна жаба. Вона зимує у воді або мулі та значною мірою отримує кисень через шкіру.</p></details>
+            <details><summary>У кого взимку змінюється колір хутра?</summary><p>У горностая. Його зимове хутро стає білим, а кінчик хвоста залишається чорним.</p></details>
+            <details><summary>Яка риба може утворювати етанол за нестачі кисню?</summary><p>Карась. Це пристосування допомагає переживати зимовий дефіцит кисню у водоймі.</p></details>
+          </div>
+          <p class="winter-note"><b>Висновок.</b> Хребетні тварини не мають одного універсального способу пережити зиму. Одні економлять енергію, інші утеплюються або виробляють тепло, а кожна стратегія відповідає умовам життя конкретного виду.</p>
+          """
+          if html.count(old) != 1:
+              raise SystemExit(f"Expected one creative placeholder, found {html.count(old)}")
+          p.write_text(html.replace(old, new.strip()), encoding="utf-8")
+          PY
+      - name: Commit the updated page
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Add vertebrates creative winter adaptations project"
+          git push
